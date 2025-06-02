@@ -20,7 +20,7 @@ const LoginForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Login Data:', form);
-        axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/login`, form)
+        axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/login`, form)
             .then(result => {
                 console.log(result)
                 if (result.data === "Success") {

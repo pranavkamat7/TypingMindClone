@@ -18,7 +18,7 @@ const SignupForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Signup Data:', form);
-        axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/register`, form)
+        axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/register`, form)
             .then(result => {console.log(result)
                 navigate('/')
             })
