@@ -49,7 +49,7 @@ FRONTEND_BASEURL= http://localhost:5173/
 # Add your MongoDB URI in .env
 #You can change "start": "node server.js" to "start": "nodemon server.js" inside package.json
 npm start
-```
+
 🌐 Frontend Setup
 cd frontend
 npm install
@@ -58,7 +58,7 @@ VITE_REACT_APP_BACKEND_BASEURL= http://localhost:5000
 
 # Set VITE_REACT_APP_BACKEND_BASEURL in .env
 npm run dev
-
+```
 ## 🎥 Demo Video
 
 [Watch Demo on Loom]( https://www.loom.com/share/894da0a21c384302b07fca80d81419f9?sid=5b86f576-85f6-420b-a992-f933dcad554a )
