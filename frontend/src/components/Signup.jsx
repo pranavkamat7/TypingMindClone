@@ -1,29 +1,45 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Spinner from './Spinner';
 
 const SignupForm = () => {
     const [form, setForm] = useState({ name: '', email: '', password: '' });
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    useEffect(()=>{
-            localStorage.removeItem('isLoggedIn');
-            localStorage.clear();
-    
-        },[])
+    useEffect(() => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.clear();
+
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
         console.log('Signup Data:', form);
         axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/register`, form)
-            .then(result => {console.log(result)
+            .then(result => {
+                console.log(result)
                 navigate('/')
+                setLoading(false);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            });
     };
+
+    if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 p-4">
+        <Spinner />
+      </div>
+    );
+  }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 p-4">

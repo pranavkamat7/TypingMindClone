@@ -17,6 +17,7 @@ const ModelList = () => {
 
   const handleDelete = async (id) => {
     await api.delete(`/models/${id}`);
+    alert('Model Deleted Successfully')
     fetchModels();
   };
 

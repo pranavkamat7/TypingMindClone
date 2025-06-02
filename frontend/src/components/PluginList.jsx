@@ -17,6 +17,7 @@ const PluginList = () => {
 
   const handleDelete = async (id) => {
     await api.delete(`/plugins/${id}`);
+    alert('Plugin Deleted Successfully')
     fetchPlugins();
   };
 

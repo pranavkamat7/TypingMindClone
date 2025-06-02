@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import Spinner from './Spinner';
 
 const LoginForm = () => {
     const [form, setForm] = useState({ email: '', password: '' });
     const { login } = useAuth()
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,6 +21,7 @@ const LoginForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
         console.log('Login Data:', form);
         axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/login`, form)
             .then(result => {
@@ -27,13 +30,26 @@ const LoginForm = () => {
                     alert('Successfully Logged In')
                     login(); 
                     navigate('/app')
+                    setLoading(false);
                 }
                 else{
                     alert(result.data)
+                    setLoading(false);
                 }
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            });
     };
+
+    if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 p-4">
+        <Spinner />
+      </div>
+    );
+  }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 p-4">

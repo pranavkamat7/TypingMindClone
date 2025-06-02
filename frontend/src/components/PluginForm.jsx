@@ -28,6 +28,11 @@ const PluginForm = ({ onSaved, editing }) => {
       await api.post('/plugins', form);
     }
     setForm({ name: '', description: '', version: '', enabled: false });
+    if(editing){
+      alert('Plugin Updated Successfully')
+    }else{
+      alert('Plugin Saved Successfully')
+    }
     onSaved();
   };
 

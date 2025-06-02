@@ -28,6 +28,13 @@ const ModelForm = ({ onSaved, editing }) => {
       await api.post('/models', form);
     }
     setForm({ name: '', description: '', apiEndpoint: '', status: 'active' });
+
+    if(editing){
+      alert('Model Updated Successfully')
+    }else{
+      alert('Model Saved Successfully')
+    }
+    
     onSaved();
   };
 
