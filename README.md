@@ -29,23 +29,33 @@ A TypingMind-style AI Chat Interface that supports full **CRUD** functionality f
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Setup Instructions locally
 
 ### 📁 Clone the Repo
 
 ```bash
 git clone https://github.com/pranavkamat7/TypingMindClone.git
-cd typingmind-clone
+cd TypingMindClone
 
 📦 Backend Setup
 cd backend
 npm install
+#create .env inside backend folder and add these
+```
+MONGO_URI=mongodb://127.0.0.1:27017/typingmindtest
+PORT=5000
+FRONTEND_BASEURL= http://localhost:5173/
+
 # Add your MongoDB URI in .env
+#You can change "start": "node server.js" to "start": "nodemon server.js" inside package.json
 npm start
 
 🌐 Frontend Setup
 cd frontend
 npm install
+#create .env inside frontend folder and add this
+VITE_REACT_APP_BACKEND_BASEURL= http://localhost:5000
+
 # Set VITE_REACT_APP_BACKEND_BASEURL in .env
 npm run dev
 
