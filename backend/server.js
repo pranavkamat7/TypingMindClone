@@ -8,9 +8,24 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
+const allowedOrigins = [
+  process.env.FRONTEND_BASEURL?.trim(),
+  'http://localhost:5173',
+  'http://localhost:3000', 
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 
 app.post('/api/register', (req, res) => {
     UserModel.create(req.body)
