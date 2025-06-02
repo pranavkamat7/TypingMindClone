@@ -41,7 +41,7 @@ cd TypingMindClone
 cd backend
 npm install
 #create .env inside backend folder and add these
-```
+
 MONGO_URI=mongodb://127.0.0.1:27017/typingmindtest
 PORT=5000
 FRONTEND_BASEURL= http://localhost:5173/
@@ -49,7 +49,7 @@ FRONTEND_BASEURL= http://localhost:5173/
 # Add your MongoDB URI in .env
 #You can change "start": "node server.js" to "start": "nodemon server.js" inside package.json
 npm start
-
+```
 🌐 Frontend Setup
 cd frontend
 npm install
