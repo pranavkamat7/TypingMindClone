@@ -46,7 +46,7 @@ app.post('/api/login', (req, res) => {
                     res.json("The Password is incorrect")
                 }
             } else {
-                res.json("No record existed")
+                res.json("No record existed. Try Signup!!")
             }
 
 
