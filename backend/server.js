@@ -11,20 +11,22 @@ const app = express();
 app.use(express.json());
 
 const allowedOrigins = [
-  process.env.FRONTEND_BASEURL?.trim(),
-  'http://localhost:5173',
-  'http://localhost:3000', 
+    process.env.FRONTEND_BASEURL?.trim(), 
+    'http://localhost:5173',
 ];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.error('Blocked by CORS:', origin);
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
 }));
 
 app.post('/api/register', (req, res) => {
@@ -43,7 +45,7 @@ app.post('/api/login', (req, res) => {
                 } else {
                     res.json("The Password is incorrect")
                 }
-            }else{
+            } else {
                 res.json("No record existed")
             }
 
