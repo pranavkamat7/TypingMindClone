@@ -13,6 +13,8 @@ app.use(express.json());
 const allowedOrigins = [
     process.env.FRONTEND_BASEURL?.trim(), 
     'http://localhost:5173',
+    "https://typing-mind-clone-ypii.vercel.app",
+    "https://typing-mind-clone-mu.vercel.app",
 ];
 
 app.use(cors({
