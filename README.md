@@ -49,5 +49,8 @@ npm install
 # Set VITE_REACT_APP_BACKEND_BASEURL in .env
 npm run dev
 
+## 🎥 Demo Video
+
+[Watch Demo on Loom]( https://www.loom.com/share/894da0a21c384302b07fca80d81419f9?sid=5b86f576-85f6-420b-a992-f933dcad554a )
 
 
